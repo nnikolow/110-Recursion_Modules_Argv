@@ -1,24 +1,28 @@
 import sys
+import random
 
-list1 = []
 
-
-def generate_permutations(a, n):
-    if n == 0:
-        print(''.join(a))
+def permutations(s):
+    if len(s) <= 1:
+        return [s]
     else:
-        for i in range(n):
-            generate_permutations(a, n - 1)
-            j = 0 if n % 2 == 0 else i
-            a[j], a[n] = a[n], a[j]
-        generate_permutations(a, n - 1)
+        perms = []
+        for e in permutations(s[:-1]):
+            for i in range(len(e)+1):
+                perms.append(e[:i] + s[-1] + e[i:])
+        return perms
 
 
 if len(sys.argv) != 2:
     sys.stderr.write('Exactly one argument is required \n')
     sys.exit(1)
 
-# word = sys.argv[0]
-word = input("word? \n")
 
-generate_permutations(list(word), len(word) - 1)
+# getting the word for permutations
+x = input("word?\n")
+
+# saving the result to a variable, making operations with it possible
+z = permutations(x)
+
+# printing randomly chosen 20 items from the list
+print(random.sample(z, 20))
