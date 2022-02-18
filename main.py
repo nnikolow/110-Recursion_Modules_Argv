@@ -12,9 +12,9 @@ def permutations(sample):
         return sample
 
 
-# if len(sys.argv) != 2:
-#     sys.stderr.write('Exactly one argument is required \n')
-#     sys.exit(1)
+if len(sys.argv) != 2:
+    sys.stderr.write('Exactly one argument is required \n')
+    sys.exit(1)
 
 
 # getting the word for permutations
